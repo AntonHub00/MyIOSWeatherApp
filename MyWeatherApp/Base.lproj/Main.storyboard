@@ -33,7 +33,7 @@
                                         <rect key="frame" x="38" y="0.0" width="298" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gm8-Yd-htN">
                                         <rect key="frame" x="344" y="0.0" width="30" height="30"/>
@@ -42,6 +42,9 @@
                                             <constraint firstAttribute="height" constant="30" id="e0b-03-p8M"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="search_icon"/>
+                                        <connections>
+                                            <action selector="searchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="61n-qa-1ds"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -91,6 +94,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="DCx-Is-MJ1" id="6tK-aR-goc"/>
+                        <outlet property="searchTextField" destination="4Yd-8Z-OPj" id="QEi-LQ-MJ2"/>
+                        <outlet property="temperatureLabel" destination="5Hy-zd-dYv" id="bjs-DS-o3Y"/>
+                        <outlet property="weatherImageView" destination="G4B-Wq-njZ" id="pnK-hJ-aMs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
