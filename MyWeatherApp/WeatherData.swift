@@ -8,24 +8,27 @@
 
 import Foundation
 
+
+struct failedWeatherData: Decodable {
+    let cod: String
+    let message: String
+}
+
+
 struct WeatherData: Decodable {
     let name: String
     let cod: Int
     let main: Main
     let weather: [Weather]
-    let coord: Coord
 }
+
 
 struct Main: Decodable {
     let temp: Double
-    let humidity: Int
 }
+
 
 struct Weather: Decodable {
     let description: String
-}
-
-struct Coord: Decodable {
-    let lon: Double
-    let lat: Double
+    let icon: String
 }

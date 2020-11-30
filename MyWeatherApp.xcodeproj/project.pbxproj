@@ -16,6 +16,7 @@
 		68DEEFD02574862700BF50E1 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68DEEFCF2574862700BF50E1 /* secrets.plist */; };
 		68DEEFD22574895000BF50E1 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DEEFD12574895000BF50E1 /* Secrets.swift */; };
 		68DEEFD425749BDF00BF50E1 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DEEFD325749BDF00BF50E1 /* WeatherData.swift */; };
+		68DEEFD62574B79100BF50E1 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DEEFD52574B79100BF50E1 /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		68DEEFCF2574862700BF50E1 /* secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
 		68DEEFD12574895000BF50E1 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		68DEEFD325749BDF00BF50E1 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		68DEEFD52574B79100BF50E1 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				68DEEFCF2574862700BF50E1 /* secrets.plist */,
 				68DEEFD12574895000BF50E1 /* Secrets.swift */,
 				68DEEFD325749BDF00BF50E1 /* WeatherData.swift */,
+				68DEEFD52574B79100BF50E1 /* WeatherModel.swift */,
 			);
 			path = MyWeatherApp;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				68DEEFD425749BDF00BF50E1 /* WeatherData.swift in Sources */,
 				68DEEFD22574895000BF50E1 /* Secrets.swift in Sources */,
 				685941C2257460AF00F06AD7 /* ViewController.swift in Sources */,
+				68DEEFD62574B79100BF50E1 /* WeatherModel.swift in Sources */,
 				685941C0257460AF00F06AD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

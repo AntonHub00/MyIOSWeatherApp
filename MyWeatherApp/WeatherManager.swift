@@ -8,7 +8,13 @@
 
 import Foundation
 
+protocol WeatherManagerDelegate {
+    func updateWeather(weather: WeatherModel)
+}
+
 struct WeatherManager {
+    
+    var delegated: WeatherManagerDelegate?
     
     let baseUrl = "https://api.openweathermap.org/data/2.5/weather?appid=\(SecretsValues.get().OpenWeatherApiKey)&units=metric"
     
@@ -42,24 +48,39 @@ struct WeatherManager {
         
         if let secureData = data {
             // Decode API JSON response
-            self.parseJSON(weatherData: secureData)
+            let weatherObj = self.parseJSON(weatherData: secureData)
+            
+            if weatherObj.succeed {
+                // Whoever is the delegated needs to implement the updateWeather method
+                delegated?.updateWeather(weather: weatherObj)
+            }
         }
     }
     
-    func parseJSON(weatherData: Data) {
+    func parseJSON(weatherData: Data) -> WeatherModel{
         let decoder = JSONDecoder()
-        do{
+        do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+                
+            // print(decodedData.cod)
+            let name = decodedData.name
+            let temperature = decodedData.main.temp
+            let description = decodedData.weather[0].description
+            let iconURL = "https://openweathermap.org/img/w/\(decodedData.weather[0].icon).png"
             
-            print(decodedData.name)
-            print(decodedData.cod)
-            print(decodedData.main.temp)
-            print(decodedData.main.humidity)
-            print(decodedData.weather[0].description)
-            print(decodedData.coord.lon)
-            print(decodedData.coord.lat)
+            return WeatherModel(succeed: true, errorMessage: nil, cityName: name, temperature: temperature, description: description, iconURL: iconURL)
         } catch {
             print(error)
+            
+            do {
+                let faileddecodedData = try decoder.decode(failedWeatherData.self, from: weatherData)
+
+                print("Message: \(faileddecodedData.message)")
+                return WeatherModel(succeed: true, errorMessage: faileddecodedData.message, cityName: nil, temperature: nil, description: nil, iconURL: nil)
+            } catch {
+                return WeatherModel(succeed: false, errorMessage: nil, cityName: nil, temperature: nil, description: nil, iconURL: nil)
+            }
+
         }
     }
 }
