@@ -55,7 +55,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCx-Is-MJ1">
                                 <rect key="frame" x="73" y="105" width="269" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="center" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WE8-Oa-HqJ">
@@ -71,7 +70,6 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hy-zd-dYv">
                                         <rect key="frame" x="50" y="16" width="164" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -79,13 +77,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLo-fy-WXK" userLabel="Description Label">
                                 <rect key="frame" x="73" y="239" width="269" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgG-pS-PXw" userLabel="Error Label">
                                 <rect key="frame" x="73" y="291" width="269" height="514"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -116,6 +112,7 @@
                     </view>
                     <connections>
                         <outlet property="ErrorLabel" destination="UgG-pS-PXw" id="Nt1-Fd-hPD"/>
+                        <outlet property="backgroundImageView" destination="UgG-pS-PXw" id="KTE-yz-hNW"/>
                         <outlet property="cityLabel" destination="DCx-Is-MJ1" id="6tK-aR-goc"/>
                         <outlet property="descriptionLabel" destination="jLo-fy-WXK" id="Arx-2K-wMA"/>
                         <outlet property="searchTextField" destination="4Yd-8Z-OPj" id="QEi-LQ-MJ2"/>
