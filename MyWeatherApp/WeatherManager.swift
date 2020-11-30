@@ -10,9 +10,9 @@ import Foundation
 
 protocol WeatherManagerDelegate {
     func updateWeather(weather: WeatherModel)
-//    func handleKnownAPIError(errorMessage: String)
-//    func handleUnknwonAPIError()
-//    func handleDeviceError(errorMessage: String)
+    func handleKnownAPIError(errorMessage: String)
+    func handleUnknwonAPIError()
+    func handleDeviceError(errorMessage: String)
 }
 
 struct WeatherManager {
@@ -45,7 +45,7 @@ struct WeatherManager {
     
     func handle(data: Data?, response: URLResponse?, error: Error?) {
         if error != nil {
-            // delegate?.handleDeviceError(errorMessage: error!.localizedDescription)
+            delegate?.handleDeviceError(errorMessage: error!.localizedDescription)
             return
         }
         
@@ -58,10 +58,10 @@ struct WeatherManager {
                     // Whoever is the delegated needs to implement the updateWeather method
                     delegate?.updateWeather(weather: weatherObj)
                 } else {
-                    // delegate?.handleKnownAPIError(errorMessage: weatherObj.errorMessage!)
+                    delegate?.handleKnownAPIError(errorMessage: weatherObj.errorMessage!)
                 }
             } else {
-                // delegate?.handleUnknwonAPIError()
+                delegate?.handleUnknwonAPIError()
             }
         }
     }
@@ -72,7 +72,6 @@ struct WeatherManager {
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
                 
-            // print(decodedData.cod)
             let name = decodedData.name
             let temperature = decodedData.main.temp
             let description = decodedData.weather[0].description
@@ -80,12 +79,9 @@ struct WeatherManager {
             
             return WeatherModel(succeed: true, errorMessage: nil, cityName: name, temperature: temperature, description: description, iconURL: iconURL)
         } catch {
-            print(error)
-            
             do {
                 let faileddecodedData = try decoder.decode(failedWeatherData.self, from: weatherData)
 
-                print("Message: \(faileddecodedData.message)")
                 return WeatherModel(succeed: true, errorMessage: faileddecodedData.message, cityName: nil, temperature: nil, description: nil, iconURL: nil)
             } catch {
                 return WeatherModel(succeed: false, errorMessage: nil, cityName: nil, temperature: nil, description: nil, iconURL: nil)

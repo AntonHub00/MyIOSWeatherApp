@@ -52,22 +52,34 @@ extension ViewController: UITextFieldDelegate {
         searchTextField.placeholder = "Type some city..."
         return false
     }
+    
 }
 
 
 extension ViewController: WeatherManagerDelegate {
-//    func handleKnownAPIError(errorMessage: String) {
-//        <#code#>
-//    }
-//    
-//    func handleUnknwonAPIError() {
-//        <#code#>
-//    }
-//    
-//    func handleDeviceError(errorMessage: String) {
-//        <#code#>
-//    }
-//    
+    func handleKnownAPIError(errorMessage: String) {
+        DispatchQueue.main.async {
+            self.cleanInputsAndOutputs()
+            self.ErrorLabel.text = "Error: \(errorMessage)"
+        }
+    }
+    
+    
+    func handleUnknwonAPIError() {
+        DispatchQueue.main.async {
+            self.cleanInputsAndOutputs()
+            self.ErrorLabel.text = "Error with the server. Try again later"
+        }
+    }
+    
+    
+    func handleDeviceError(errorMessage: String) {
+        DispatchQueue.main.async {
+           self.cleanInputsAndOutputs()
+            self.ErrorLabel.text = "Interal error: \(errorMessage)"
+        }
+    }
+    
     
     func updateWeather(weather: WeatherModel) {
         DispatchQueue.main.async {
@@ -76,6 +88,14 @@ extension ViewController: WeatherManagerDelegate {
             self.descriptionLabel.text = weather.description
             self.weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
         }
+    }
+    
+    
+    func cleanInputsAndOutputs() {
+        self.cityLabel.text = ""
+        self.temperatureLabel.text = ""
+        self.descriptionLabel.text = ""
+        self.weatherImageView.image = nil
     }
     
 }
