@@ -61,9 +61,11 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController: WeatherManagerDelegate {
     
     func updateWeather(weather: WeatherModel) {
-        cityLabel.text = weather.cityName
-        temperatureLabel.text = "\(weather.temperature!)°C"
-        weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
+        DispatchQueue.main.async {
+            self.cityLabel.text = weather.cityName
+            self.temperatureLabel.text = "\(weather.temperature!)°C"
+            self.weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
+        }
     }
     
 }
