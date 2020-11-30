@@ -9,13 +9,13 @@
 import Foundation
 
 
-struct failedWeatherData: Decodable {
+struct failedWeatherData: Codable {
     let cod: String
     let message: String
 }
 
 
-struct WeatherData: Decodable {
+struct WeatherData: Codable {
     let name: String
     let cod: Int
     let main: Main
@@ -23,12 +23,12 @@ struct WeatherData: Decodable {
 }
 
 
-struct Main: Decodable {
+struct Main: Codable {
     let temp: Double
 }
 
 
-struct Weather: Decodable {
+struct Weather: Codable {
     let description: String
     let icon: String
 }

@@ -15,30 +15,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     
-    let weatherObj = WeatherManager()
+    var weatherManagerObj = WeatherManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchTextField.delegate = self
+        weatherManagerObj.delegate = self
         
         // To load image from URL
         // weatherImageView.myLoadFromURL(urlString: "https://openweathermap.org/img/w/01n.png")
     }
 
+    
     @IBAction func searchButton(_ sender: UIButton) {
-        cityLabel.text = searchTextField.text
-        weatherObj.fetchWeather(cityName: searchTextField.text!)
+        weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
     }
     
 }
 
+
 extension ViewController: UITextFieldDelegate {
+    
     // Program search button in screen keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        cityLabel.text = searchTextField.text
+        weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
         return true
     }
+    
     
     // Validate if text field is empty
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -49,7 +54,20 @@ extension ViewController: UITextFieldDelegate {
         searchTextField.placeholder = "Write some city"
         return false
     }
+    
 }
+
+
+extension ViewController: WeatherManagerDelegate {
+    
+    func updateWeather(weather: WeatherModel) {
+        cityLabel.text = weather.cityName
+        temperatureLabel.text = "\(weather.temperature!)°C"
+        weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
+    }
+    
+}
+
 
 extension UIImageView {
     

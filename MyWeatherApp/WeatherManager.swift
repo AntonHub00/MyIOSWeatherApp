@@ -14,7 +14,7 @@ protocol WeatherManagerDelegate {
 
 struct WeatherManager {
     
-    var delegated: WeatherManagerDelegate?
+    var delegate: WeatherManagerDelegate?
     
     let baseUrl = "https://api.openweathermap.org/data/2.5/weather?appid=\(SecretsValues.get().OpenWeatherApiKey)&units=metric"
     
@@ -52,7 +52,7 @@ struct WeatherManager {
             
             if weatherObj.succeed {
                 // Whoever is the delegated needs to implement the updateWeather method
-                delegated?.updateWeather(weather: weatherObj)
+                delegate?.updateWeather(weather: weatherObj)
             }
         }
     }
