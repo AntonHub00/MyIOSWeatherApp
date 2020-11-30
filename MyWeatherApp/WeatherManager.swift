@@ -41,7 +41,25 @@ struct WeatherManager {
         }
         
         if let secureData = data {
-            let dataString = String(data: secureData, encoding: .utf8)
+            // Decode API JSON response
+            self.parseJSON(weatherData: secureData)
+        }
+    }
+    
+    func parseJSON(weatherData: Data) {
+        let decoder = JSONDecoder()
+        do{
+            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+            
+            print(decodedData.name)
+            print(decodedData.cod)
+            print(decodedData.main.temp)
+            print(decodedData.main.humidity)
+            print(decodedData.weather[0].description)
+            print(decodedData.coord.lon)
+            print(decodedData.coord.lat)
+        } catch {
+            print(error)
         }
     }
 }
