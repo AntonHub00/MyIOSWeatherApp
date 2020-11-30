@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UILabel!
     
     var weatherManagerObj = WeatherManager()
+    var locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
@@ -26,6 +28,10 @@ class ViewController: UIViewController {
         
         searchTextField.delegate = self
         weatherManagerObj.delegate = self
+        locationManager.delegate = self
+        
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         
         setGradientBackground()
     }
@@ -33,7 +39,7 @@ class ViewController: UIViewController {
     
     @IBAction func searchButton(_ sender: UIButton) {
         if searchTextField.text != "" {
-            weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
+            weatherManagerObj.fetchWeatherByCityName(cityName: searchTextField.text!)
             return
         }
         
@@ -48,7 +54,7 @@ extension ViewController: UITextFieldDelegate {
     // Program search button in screen keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if searchTextField.text != "" {
-            weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
+            weatherManagerObj.fetchWeatherByCityName(cityName: searchTextField.text!)
             return true
         }
         
@@ -99,6 +105,25 @@ extension ViewController: WeatherManagerDelegate {
         self.temperatureLabel.text = ""
         self.descriptionLabel.text = ""
         self.weatherImageView.image = nil
+    }
+    
+}
+
+
+extension ViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let deviceLocations = locations.last {
+            let latitude = deviceLocations.coordinate.latitude
+            let longitude = deviceLocations.coordinate.longitude
+            print("Latitude: \(longitude), longitude: \(latitude)")
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("LOCATION ERROR")
+        print(error.localizedDescription)
     }
     
 }
