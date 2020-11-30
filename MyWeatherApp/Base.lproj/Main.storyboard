@@ -76,15 +76,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLo-fy-WXK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLo-fy-WXK" userLabel="Description Label">
                                 <rect key="frame" x="73" y="239" width="269" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgG-pS-PXw">
-                                <rect key="frame" x="73" y="291" width="269" height="422"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgG-pS-PXw" userLabel="Error Label">
+                                <rect key="frame" x="73" y="291" width="269" height="514"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -95,13 +94,17 @@
                             <constraint firstItem="dY5-qz-1mm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2X6-b8-tHw"/>
                             <constraint firstItem="dY5-qz-1mm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6CX-Am-iVj"/>
                             <constraint firstItem="jLo-fy-WXK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="6sx-Xp-O1n"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UgG-pS-PXw" secondAttribute="bottom" constant="57" id="9d5-7q-YUX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DCx-Is-MJ1" secondAttribute="bottom" constant="721" id="Amk-mW-fTc"/>
                             <constraint firstItem="DCx-Is-MJ1" firstAttribute="top" secondItem="dY5-qz-1mm" secondAttribute="bottom" constant="31" id="CdV-Ma-fCF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WE8-Oa-HqJ" secondAttribute="trailing" constant="100" id="IbM-m8-kub"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UgG-pS-PXw" secondAttribute="trailing" constant="72" id="Lei-B0-pxD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jLo-fy-WXK" secondAttribute="trailing" constant="72" id="Ovk-P8-SeM"/>
                             <constraint firstItem="WE8-Oa-HqJ" firstAttribute="top" secondItem="DCx-Is-MJ1" secondAttribute="bottom" constant="8" id="QlV-sf-4G0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WE8-Oa-HqJ" secondAttribute="bottom" constant="631" id="Rwj-f6-nBC"/>
                             <constraint firstItem="DCx-Is-MJ1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="UAv-lK-lRH"/>
+                            <constraint firstItem="UgG-pS-PXw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="ZXd-2I-Pmu"/>
+                            <constraint firstItem="UgG-pS-PXw" firstAttribute="top" secondItem="jLo-fy-WXK" secondAttribute="bottom" constant="28" id="bax-1X-aP2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dY5-qz-1mm" secondAttribute="bottom" constant="788" id="dGS-yU-PQZ"/>
                             <constraint firstItem="WE8-Oa-HqJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="dxT-ne-L0Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jLo-fy-WXK" secondAttribute="bottom" constant="599" id="m2m-Pf-5Yi"/>
@@ -112,7 +115,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="ErrorLabel" destination="UgG-pS-PXw" id="Nt1-Fd-hPD"/>
                         <outlet property="cityLabel" destination="DCx-Is-MJ1" id="6tK-aR-goc"/>
+                        <outlet property="descriptionLabel" destination="jLo-fy-WXK" id="Arx-2K-wMA"/>
                         <outlet property="searchTextField" destination="4Yd-8Z-OPj" id="QEi-LQ-MJ2"/>
                         <outlet property="temperatureLabel" destination="5Hy-zd-dYv" id="bjs-DS-o3Y"/>
                         <outlet property="weatherImageView" destination="G4B-Wq-njZ" id="pnK-hJ-aMs"/>

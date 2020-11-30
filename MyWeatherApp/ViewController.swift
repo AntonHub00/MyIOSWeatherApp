@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var ErrorLabel: UILabel!
     
     var weatherManagerObj = WeatherManager()
     
@@ -71,6 +73,7 @@ extension ViewController: WeatherManagerDelegate {
         DispatchQueue.main.async {
             self.cityLabel.text = weather.cityName
             self.temperatureLabel.text = "\(weather.temperature!)°C"
+            self.descriptionLabel.text = weather.description
             self.weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
         }
     }
