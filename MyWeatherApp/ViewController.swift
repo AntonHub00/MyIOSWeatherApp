@@ -118,9 +118,12 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let deviceLocations = locations.last {
+            // No longer update location since we already have it
             locationManager.stopUpdatingLocation()
+            
             let latitude = deviceLocations.coordinate.latitude
             let longitude = deviceLocations.coordinate.longitude
+            
             weatherManagerObj.fetchWeatherByLocation(latitude: latitude, longitude: longitude)
             
         }
