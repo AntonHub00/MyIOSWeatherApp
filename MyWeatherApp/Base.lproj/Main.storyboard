@@ -28,6 +28,9 @@
                                             <constraint firstAttribute="height" constant="30" id="yCH-BO-ZXA"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="location_icon"/>
+                                        <connections>
+                                            <action selector="locationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wwr-PC-cwh"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-8Z-OPj">
                                         <rect key="frame" x="38" y="0.0" width="298" height="30"/>

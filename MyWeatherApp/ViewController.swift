@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         locationManager.delegate = self
         
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
         
         setGradientBackground()
     }
@@ -44,6 +43,11 @@ class ViewController: UIViewController {
         }
         
         searchTextField.placeholder = "Type some city..."
+    }
+    
+    
+    @IBAction func locationButton(_ sender: UIButton) {
+        locationManager.requestLocation()
     }
     
 }
@@ -114,9 +118,11 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let deviceLocations = locations.last {
+            locationManager.stopUpdatingLocation()
             let latitude = deviceLocations.coordinate.latitude
             let longitude = deviceLocations.coordinate.longitude
-            print("Latitude: \(longitude), longitude: \(latitude)")
+            weatherManagerObj.fetchWeatherByLocation(latitude: latitude, longitude: longitude)
+            
         }
     }
     
