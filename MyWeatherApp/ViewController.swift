@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     
+    let weatherObj = WeatherManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
 
     @IBAction func searchButton(_ sender: UIButton) {
         cityLabel.text = searchTextField.text
+        weatherObj.fetchWeather(cityName: searchTextField.text!)
     }
     
 }
