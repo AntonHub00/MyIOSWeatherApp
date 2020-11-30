@@ -21,6 +21,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         searchTextField.delegate = self
+        
+        // To load image from URL
+        // weatherImageView.myLoadFromURL(urlString: "https://openweathermap.org/img/w/01n.png")
     }
 
     @IBAction func searchButton(_ sender: UIButton) {
@@ -46,4 +49,23 @@ extension ViewController: UITextFieldDelegate {
         searchTextField.placeholder = "Write some city"
         return false
     }
+}
+
+extension UIImageView {
+    
+    // Loads image from URL
+    func myLoadFromURL(urlString: String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+    
 }
