@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         locationManager.delegate = self
         
         locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         
         setGradientBackground()
     }
