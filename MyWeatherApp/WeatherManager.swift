@@ -10,6 +10,9 @@ import Foundation
 
 protocol WeatherManagerDelegate {
     func updateWeather(weather: WeatherModel)
+//    func handleKnownAPIError(errorMessage: String)
+//    func handleUnknwonAPIError()
+//    func handleDeviceError(errorMessage: String)
 }
 
 struct WeatherManager {
@@ -42,7 +45,7 @@ struct WeatherManager {
     
     func handle(data: Data?, response: URLResponse?, error: Error?) {
         if error != nil {
-            print(error!)
+            // delegate?.handleDeviceError(errorMessage: error!.localizedDescription)
             return
         }
         
@@ -51,11 +54,18 @@ struct WeatherManager {
             let weatherObj = self.parseJSON(weatherData: secureData)
             
             if weatherObj.succeed {
-                // Whoever is the delegated needs to implement the updateWeather method
-                delegate?.updateWeather(weather: weatherObj)
+                if weatherObj.errorMessage == nil {
+                    // Whoever is the delegated needs to implement the updateWeather method
+                    delegate?.updateWeather(weather: weatherObj)
+                } else {
+                    // delegate?.handleKnownAPIError(errorMessage: weatherObj.errorMessage!)
+                }
+            } else {
+                // delegate?.handleUnknwonAPIError()
             }
         }
     }
+    
     
     func parseJSON(weatherData: Data) -> WeatherModel{
         let decoder = JSONDecoder()

@@ -23,14 +23,16 @@ class ViewController: UIViewController {
         
         searchTextField.delegate = self
         weatherManagerObj.delegate = self
-        
-        // To load image from URL
-        // weatherImageView.myLoadFromURL(urlString: "https://openweathermap.org/img/w/01n.png")
     }
 
     
     @IBAction func searchButton(_ sender: UIButton) {
-        weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
+        if searchTextField.text != "" {
+            weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
+            return
+        }
+        
+        searchTextField.placeholder = "Type some city..."
     }
     
 }
@@ -40,25 +42,30 @@ extension ViewController: UITextFieldDelegate {
     
     // Program search button in screen keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
-        return true
-    }
-    
-    
-    // Validate if text field is empty
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if searchTextField.text != "" {
+            weatherManagerObj.fetchWeather(cityName: searchTextField.text!)
             return true
         }
         
-        searchTextField.placeholder = "Write some city"
+        searchTextField.placeholder = "Type some city..."
         return false
     }
-    
 }
 
 
 extension ViewController: WeatherManagerDelegate {
+//    func handleKnownAPIError(errorMessage: String) {
+//        <#code#>
+//    }
+//    
+//    func handleUnknwonAPIError() {
+//        <#code#>
+//    }
+//    
+//    func handleDeviceError(errorMessage: String) {
+//        <#code#>
+//    }
+//    
     
     func updateWeather(weather: WeatherModel) {
         DispatchQueue.main.async {
