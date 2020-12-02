@@ -113,6 +113,7 @@ extension ViewController: WeatherManagerDelegate {
             self.temperatureLabel.text = "\(weather.temperature!)°C"
             self.descriptionLabel.text = weather.description
             self.weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
+            self.ErrorLabel.text = ""
         }
     }
     
