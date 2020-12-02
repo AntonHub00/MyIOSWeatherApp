@@ -18,7 +18,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureMinLabel: UILabel!
     @IBOutlet weak var temperatureMaxLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var humidityValueLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var windSpeedValueLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var ErrorLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UILabel!
@@ -118,8 +120,10 @@ extension ViewController: WeatherManagerDelegate {
             self.descriptionLabel.text = weather.description
             self.temperatureMinLabel.text = "Min. \(weather.temperatureMin!) °C"
             self.temperatureMaxLabel.text = "Max. \(weather.temperatureMax!) °C"
-            self.humidityLabel.text = "\(weather.humidity!)%"
-            self.windSpeedLabel.text = "\(weather.windSpeed!) m/s"
+            self.humidityLabel.text = "Humidity"
+            self.humidityValueLabel.text = "\(weather.humidity!)%"
+            self.windSpeedLabel.text = "Wind Speed"
+            self.windSpeedValueLabel.text = "\(weather.windSpeed!) m/s"
             self.weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
             self.ErrorLabel.text = ""
         }
@@ -133,7 +137,9 @@ extension ViewController: WeatherManagerDelegate {
         temperatureMinLabel.text = ""
         temperatureMaxLabel.text = ""
         humidityLabel.text = ""
+        humidityValueLabel.text = ""
         windSpeedLabel.text = ""
+        windSpeedValueLabel.text = ""
         weatherImageView.image = nil
     }
 }

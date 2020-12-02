@@ -102,7 +102,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="JMt-Gw-o6N" userLabel="Humidity Stack View">
                                 <rect key="frame" x="100" y="324" width="214" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBJ-B0-TfF">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBJ-B0-TfF">
                                         <rect key="frame" x="0.0" y="0.0" width="78.5" height="50"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -119,7 +119,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="vIa-Hw-XAs" userLabel="Wind Speed Stack View">
                                 <rect key="frame" x="100" y="385.5" width="214.5" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vts-MK-RPt">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vts-MK-RPt">
                                         <rect key="frame" x="0.0" y="0.0" width="106.5" height="50"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -179,13 +179,15 @@
                         <outlet property="backgroundImageView" destination="UgG-pS-PXw" id="KTE-yz-hNW"/>
                         <outlet property="cityLabel" destination="DCx-Is-MJ1" id="6tK-aR-goc"/>
                         <outlet property="descriptionLabel" destination="jLo-fy-WXK" id="Arx-2K-wMA"/>
-                        <outlet property="humidityLabel" destination="F7a-eB-m8A" id="trn-Ba-fmE"/>
+                        <outlet property="humidityLabel" destination="oBJ-B0-TfF" id="bqg-Vd-XxC"/>
+                        <outlet property="humidityValueLabel" destination="F7a-eB-m8A" id="zTf-8C-9RD"/>
                         <outlet property="searchTextField" destination="4Yd-8Z-OPj" id="QEi-LQ-MJ2"/>
                         <outlet property="temperatureLabel" destination="5Hy-zd-dYv" id="bjs-DS-o3Y"/>
                         <outlet property="temperatureMaxLabel" destination="80l-tk-QzI" id="12u-yU-4ew"/>
                         <outlet property="temperatureMinLabel" destination="gbk-Ds-hmg" id="92d-A6-82o"/>
                         <outlet property="weatherImageView" destination="G4B-Wq-njZ" id="pnK-hJ-aMs"/>
-                        <outlet property="windSpeedLabel" destination="dLz-Ru-9RK" id="ZZg-Cm-GMg"/>
+                        <outlet property="windSpeedLabel" destination="vts-MK-RPt" id="cU7-Kj-uaS"/>
+                        <outlet property="windSpeedValueLabel" destination="dLz-Ru-9RK" id="VaL-HO-uzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
