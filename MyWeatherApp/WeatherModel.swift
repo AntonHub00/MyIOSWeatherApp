@@ -15,5 +15,9 @@ struct WeatherModel {
     let cityName: String?
     let temperature: Double?
     let description: String?
+    let windSpeed: Double?
+    let humidity: Int?
+    let temperatureMax: Double?
+    let temperatureMin: Double?
     let iconURL: String?
  }

@@ -81,16 +81,53 @@ struct WeatherManager {
             let name = decodedData.name
             let temperature = decodedData.main.temp
             let description = decodedData.weather[0].description
+            let windSpeed = decodedData.wind.speed
+            let humidity = decodedData.main.humidity
+            let temperatureMax = decodedData.main.temp_max
+            let temperatureMin = decodedData.main.temp_min
             let iconURL = "https://openweathermap.org/img/w/\(decodedData.weather[0].icon).png"
             
-            return WeatherModel(succeed: true, errorMessage: nil, cityName: name, temperature: temperature, description: description, iconURL: iconURL)
+            return WeatherModel(
+                succeed: true,
+                errorMessage: nil,
+                cityName: name,
+                temperature: temperature,
+                description: description,
+                windSpeed: windSpeed,
+                humidity: humidity,
+                temperatureMax: temperatureMax,
+                temperatureMin: temperatureMin,
+                iconURL: iconURL
+            )
         } catch {
             do {
                 let faileddecodedData = try decoder.decode(failedWeatherData.self, from: weatherData)
 
-                return WeatherModel(succeed: true, errorMessage: faileddecodedData.message, cityName: nil, temperature: nil, description: nil, iconURL: nil)
+                return WeatherModel(
+                    succeed: true,
+                    errorMessage: faileddecodedData.message,
+                    cityName: nil,
+                    temperature: nil,
+                    description: nil,
+                    windSpeed: nil,
+                    humidity: nil,
+                    temperatureMax: nil,
+                    temperatureMin: nil,
+                    iconURL: nil
+                )
             } catch {
-                return WeatherModel(succeed: false, errorMessage: nil, cityName: nil, temperature: nil, description: nil, iconURL: nil)
+                return WeatherModel(
+                    succeed: false,
+                    errorMessage: nil,
+                    cityName: nil,
+                    temperature: nil,
+                    description: nil,
+                    windSpeed: nil,
+                    humidity: nil,
+                    temperatureMax: nil,
+                    temperatureMin: nil,
+                    iconURL: nil
+                )
             }
 
         }
