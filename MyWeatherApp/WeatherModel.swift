@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 struct WeatherModel {
     let succeed: Bool
     let errorMessage: String?

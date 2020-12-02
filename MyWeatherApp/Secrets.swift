@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 
+
 struct Secrets: Decodable {
     // This must be equal to the key name in secrets.plist
     let OpenWeatherApiKey: String
 }
+
 
 struct SecretsValues {
     static func get() -> Secrets {

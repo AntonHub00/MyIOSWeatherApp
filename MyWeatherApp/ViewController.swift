@@ -50,12 +50,25 @@ class ViewController: UIViewController {
     @IBAction func locationButton(_ sender: UIButton) {
         locationManager.requestLocation()
     }
-    
+}
+
+
+extension ViewController {
+    func setGradientBackground() {
+        let colorTop =  UIColor(red: 102/255.0, green: 204/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 255.0/255.0, green: 204/255.0, blue: 102/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        
+        self.view.layer.insertSublayer(gradientLayer, at:0)
+    }
 }
 
 
 extension ViewController: UITextFieldDelegate {
-    
     // Program search button in screen keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if searchTextField.text != "" {
@@ -66,7 +79,6 @@ extension ViewController: UITextFieldDelegate {
         searchTextField.placeholder = "Type some city..."
         return false
     }
-    
 }
 
 
@@ -106,17 +118,15 @@ extension ViewController: WeatherManagerDelegate {
     
     
     func cleanInputsAndOutputs() {
-        self.cityLabel.text = ""
-        self.temperatureLabel.text = ""
-        self.descriptionLabel.text = ""
-        self.weatherImageView.image = nil
+        cityLabel.text = ""
+        temperatureLabel.text = ""
+        descriptionLabel.text = ""
+        weatherImageView.image = nil
     }
-    
 }
 
 
 extension ViewController: CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let deviceLocations = locations.last {
             // No longer update location since we already have it
@@ -135,13 +145,10 @@ extension ViewController: CLLocationManagerDelegate {
         print("LOCATION ERROR")
         print(error.localizedDescription)
     }
-    
 }
 
 
 extension UIImageView {
-    
-    // Loads image from URL
     func myLoadFromURL(urlString: String) {
         guard let url = URL(string: urlString) else {return}
         
@@ -154,20 +161,5 @@ extension UIImageView {
                 }
             }
         }
-    }
-    
-}
-
-extension ViewController {
-    func setGradientBackground() {
-        let colorTop =  UIColor(red: 102/255.0, green: 204/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-        let colorBottom = UIColor(red: 255.0/255.0, green: 204/255.0, blue: 102/255.0, alpha: 1.0).cgColor
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.view.bounds
-        
-        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 }
