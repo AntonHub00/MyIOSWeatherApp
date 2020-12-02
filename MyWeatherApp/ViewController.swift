@@ -15,6 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var temperatureMinLabel: UILabel!
+    @IBOutlet weak var temperatureMaxLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var ErrorLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UILabel!
@@ -110,8 +114,12 @@ extension ViewController: WeatherManagerDelegate {
     func updateWeather(weather: WeatherModel) {
         DispatchQueue.main.async {
             self.cityLabel.text = weather.cityName
-            self.temperatureLabel.text = "\(weather.temperature!)°C"
+            self.temperatureLabel.text = "\(weather.temperature!) °C"
             self.descriptionLabel.text = weather.description
+            self.temperatureMinLabel.text = "Min. \(weather.temperatureMin!) °C"
+            self.temperatureMaxLabel.text = "Max. \(weather.temperatureMax!) °C"
+            self.humidityLabel.text = "\(weather.humidity!)%"
+            self.windSpeedLabel.text = "\(weather.windSpeed!) m/s"
             self.weatherImageView.myLoadFromURL(urlString: weather.iconURL!)
             self.ErrorLabel.text = ""
         }
@@ -122,6 +130,10 @@ extension ViewController: WeatherManagerDelegate {
         cityLabel.text = ""
         temperatureLabel.text = ""
         descriptionLabel.text = ""
+        temperatureMinLabel.text = ""
+        temperatureMaxLabel.text = ""
+        humidityLabel.text = ""
+        windSpeedLabel.text = ""
         weatherImageView.image = nil
     }
 }
